@@ -9,10 +9,6 @@
     <div
       :class="'vue-scrollbar__area' + ( this.dragging ? ' ' : ' vue-scrollbar-transition')"
       ref="scrollArea"
-      @wheel="scroll"
-      @touchstart="startDrag"
-      @touchmove="onDrag"
-      @touchend="stopDrag"
       :style="{
         marginTop: this.top * -1 +'px',
         marginLeft: this.left * -1 +'px'
@@ -64,6 +60,7 @@
         default: 53
       },
       onMaxScroll: Function,
+        onDragHandle: Function,
     },
 
     components: {
@@ -166,6 +163,10 @@
 
           this.normalizeVertical(nextY)
           this.normalizeHorizontal(nextX)
+
+          if(this.onDragHandle){
+              this.onDragHandle({top: this.top, left: this.left});
+          }
 
         }
       },
