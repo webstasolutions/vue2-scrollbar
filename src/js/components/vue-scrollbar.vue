@@ -164,10 +164,6 @@
           this.normalizeVertical(nextY)
           this.normalizeHorizontal(nextX)
 
-          if(this.onDragHandle){
-              this.onDragHandle({top: this.top, left: this.left});
-          }
-
         }
       },
 
@@ -251,6 +247,11 @@
 
       handleScrollbarDragging(){
         this.dragging = true
+
+
+          if(this.onDragHandle){
+              this.onDragHandle({top: this.top, left: this.left});
+          }
       },
 
       handleScrollbarStopDrag(){

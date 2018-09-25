@@ -710,10 +710,6 @@ exports.default = {
 
         this.normalizeVertical(nextY);
         this.normalizeHorizontal(nextX);
-
-        if (this.onDragHandle) {
-          this.onDragHandle({ top: this.top, left: this.left });
-        }
       }
     },
     stopDrag: function stopDrag(e) {
@@ -789,6 +785,10 @@ exports.default = {
     },
     handleScrollbarDragging: function handleScrollbarDragging() {
       this.dragging = true;
+
+      if (this.onDragHandle) {
+        this.onDragHandle({ top: this.top, left: this.left });
+      }
     },
     handleScrollbarStopDrag: function handleScrollbarStopDrag() {
       this.dragging = false;
