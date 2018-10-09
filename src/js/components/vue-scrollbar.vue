@@ -18,6 +18,7 @@
 
         <vertical-scrollbar
           v-if="ready"
+          ref="vertical"
           :area="{ height: scrollAreaHeight }"
           :wrapper="{ height: scrollWrapperHeight }"
           :scrolling="vMovement"
@@ -29,6 +30,7 @@
 
         <horizontal-scrollbar
           v-if="ready"
+          ref="horizontal"
           :area="{ width: scrollAreaWidth }"
           :wrapper="{ width: scrollWrapperWidth }"
           :scrolling="hMovement"
@@ -275,6 +277,11 @@
         }
         return elementSize
       },
+
+        calculateDragAreaSize(){
+            this.$refs.horizontal.calculateSize(this.$refs.horizontal);
+            this.$refs.vertical.calculateSize(this.$refs.vertical);
+        },
 
       calculateSize(cb){
         if(typeof cb !== 'function') cb = null;
