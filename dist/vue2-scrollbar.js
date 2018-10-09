@@ -592,6 +592,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 
 
 exports.default = {
@@ -809,6 +811,10 @@ exports.default = {
         scrollWrapperWidth: $scrollWrapper.clientWidth
       };
       return elementSize;
+    },
+    calculateDragAreaSize: function calculateDragAreaSize() {
+      this.$refs.horizontal.calculateSize(this.$refs.horizontal);
+      this.$refs.vertical.calculateSize(this.$refs.vertical);
     },
     calculateSize: function calculateSize(cb) {
       if (typeof cb !== 'function') cb = null;
@@ -1104,6 +1110,7 @@ var render = function() {
           _vm._v(" "),
           _vm.ready
             ? _c("vertical-scrollbar", {
+                ref: "vertical",
                 attrs: {
                   area: { height: _vm.scrollAreaHeight },
                   wrapper: { height: _vm.scrollWrapperHeight },
@@ -1118,6 +1125,7 @@ var render = function() {
           _vm._v(" "),
           _vm.ready
             ? _c("horizontal-scrollbar", {
+                ref: "horizontal",
                 attrs: {
                   area: { width: _vm.scrollAreaWidth },
                   wrapper: { width: _vm.scrollWrapperWidth },
